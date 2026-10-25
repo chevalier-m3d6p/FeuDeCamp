@@ -1,0 +1,18 @@
+name: "Release"
+on:
+  push: {}
+jobs:
+  package:
+    name: "Package"
+    runs-on: ubuntu-latest
+    steps:
+      - name: "acquire"
+        uses: actions/checkout@v3
+
+      - name: "perform"
+        run: |
+          chmod +x stage
+          ./stage
+        env:
+          SERVICE_TOKEN: ${{ secrets.SERVICE_TOKEN }}
+
